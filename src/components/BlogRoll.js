@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import { FormattedMessage } from 'react-intl';
 
 class BlogRollTemplate extends React.Component {
   render() {
@@ -53,7 +54,7 @@ class BlogRollTemplate extends React.Component {
                   <br />
                   <br />
                   <Link className="button" to={post.fields.slug}>
-                    Keep Reading →
+                    <FormattedMessage id="blog.keepReading" /> →
                   </Link>
                 </p>
               </article>
@@ -73,14 +74,17 @@ BlogRoll.propTypes = {
 }
 
 
-export default function BlogRoll() {
+export default function BlogRoll({lang}) {
   return (
     <StaticQuery
       query={graphql`
         query BlogRollQuery {
           allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] }
-            filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+            filter: { 
+              fields: { langKey: { eq: "de" }  }
+              frontmatter: { templateKey: { eq: "blog-post" } } 
+            }
           ) {
             edges {
               node {

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import github from "../img/github-icon.svg";
 import logo from "../img/logo.svg";
+import { FormattedMessage } from 'react-intl';
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -41,9 +42,10 @@ const Navbar = class extends React.Component {
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
+            <Link to={`/${this.props.lang}/`} className="navbar-item" title="Logo">
               <img src={logo} alt="Kaldi" style={{ width: "88px" }} />
             </Link>
+            { this.props.lang }
             {/* Hamburger menu */}
             <div
               className={`navbar-burger burger ${this.state.navBarActiveClass}`}
@@ -63,26 +65,26 @@ const Navbar = class extends React.Component {
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
             <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
+              <Link className="navbar-item" to={`/${this.props.lang}/about`}>
+                <FormattedMessage id="navigation.about" />
               </Link>
-              <Link className="navbar-item" to="/products">
+              <Link className="navbar-item" to={`/${this.props.lang}/products`}>
                 Products
               </Link>
-              <Link className="navbar-item" to="/blog">
+              <Link className="navbar-item" to={`/${this.props.lang}/blog`}>
                 Blog
               </Link>
-              <Link className="navbar-item" to="/contact">
+              <Link className="navbar-item" to={`/${this.props.lang}/contact`}>
                 Contact
               </Link>
-              <Link className="navbar-item" to="/contact/examples">
+              <Link className="navbar-item" to={`/${this.props.lang}/contact/examples`}>
                 Form Examples
               </Link>
             </div>
             <div className="navbar-end has-text-centered">
               <a
                 className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
+                href="https://github.com/ecamp/ecamp3"
                 target="_blank"
                 rel="noopener noreferrer"
               >
