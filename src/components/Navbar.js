@@ -3,6 +3,9 @@ import { Link } from "gatsby";
 import github from "../img/github-icon.svg";
 import logo from "../img/logo.svg";
 import { FormattedMessage } from 'react-intl';
+import SelectLanguage from './SelectLanguage';
+
+
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -45,7 +48,6 @@ const Navbar = class extends React.Component {
             <Link to={`/${this.props.lang}/`} className="navbar-item" title="Logo">
               <img src={logo} alt="Kaldi" style={{ width: "88px" }} />
             </Link>
-            { this.props.lang }
             {/* Hamburger menu */}
             <div
               className={`navbar-burger burger ${this.state.navBarActiveClass}`}
@@ -68,9 +70,6 @@ const Navbar = class extends React.Component {
               <Link className="navbar-item" to={`/${this.props.lang}/about`}>
                 <FormattedMessage id="navigation.about" />
               </Link>
-              <Link className="navbar-item" to={`/${this.props.lang}/products`}>
-                Products
-              </Link>
               <Link className="navbar-item" to={`/${this.props.lang}/blog`}>
                 Blog
               </Link>
@@ -81,6 +80,9 @@ const Navbar = class extends React.Component {
                 Form Examples
               </Link>
             </div>
+
+            <SelectLanguage lang={this.props.lang} langs={this.props.langs} />
+
             <div className="navbar-end has-text-centered">
               <a
                 className="navbar-item"

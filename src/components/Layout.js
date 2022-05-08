@@ -72,7 +72,7 @@ const TemplateWrapper = ({ children, i18nMessages }) => {
             content={`${withPrefix("/")}img/og-image.jpg`}
           />
         </Helmet>
-        <Navbar lang={langKey} />
+        <Navbar lang={langKey} langs={langs} />
         <div>{children}</div>
         <Footer lang={langKey} />
       </div>
