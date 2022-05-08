@@ -4,23 +4,18 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import "./all.sass";
 import useSiteMetadata from "./SiteMetadata";
+import usePageLanguage from "./PageLanguage";
 import { withPrefix } from "gatsby";
 import { IntlProvider } from 'react-intl';
-import { useLocation } from "@reach/router"
-import { getCurrentLangKey } from 'ptz-i18n';
 import flatten from "flat";
 
 import enMessages from '../data/messages/en';
 import deMessages from '../data/messages/de';
 
 const TemplateWrapper = ({ children, i18nMessages }) => {
-  const { title, description, languages } = useSiteMetadata();
+  const { title, description } = useSiteMetadata();
 
-  // detect language for current page from URL
-  const location = useLocation()
-  const url = location.pathname
-  const { langs, defaultLangKey } = languages;
-  const langKey = getCurrentLangKey(langs, defaultLangKey, url);
+  const { lang: langKey, langs } = usePageLanguage()
 
   // load translation messages
   const messages = {

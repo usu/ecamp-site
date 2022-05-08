@@ -4,15 +4,16 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import { FormattedMessage } from 'react-intl';
 
-class BlogRollTemplate extends React.Component {
-  render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+const BlogRollTemplate = ({data, lang}) => {
 
-    return (
-      <div className="columns is-multiline">
-        {posts &&
-          posts.map(({ node: post }) => (
+  const { edges: posts } = data.allMarkdownRemark
+
+  return (
+    <div className="columns is-multiline">
+      {posts &&
+        posts
+          .filter(post => (post.node.fields.langKey === lang))
+          .map(({ node: post }) => (
             <div className="is-parent column is-6" key={post.id}>
               <article
                 className={`blog-list-item tile is-child box notification ${
@@ -60,9 +61,9 @@ class BlogRollTemplate extends React.Component {
               </article>
             </div>
           ))}
-      </div>
-    )
-  }
+    </div>
+  )
+  
 }
 
 BlogRoll.propTypes = {
@@ -74,7 +75,7 @@ BlogRoll.propTypes = {
 }
 
 
-export default function BlogRoll({lang}) {
+export default function BlogRoll(props) {
   return (
     <StaticQuery
       query={graphql`
@@ -82,7 +83,6 @@ export default function BlogRoll({lang}) {
           allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] }
             filter: { 
-              fields: { langKey: { eq: "de" }  }
               frontmatter: { templateKey: { eq: "blog-post" } } 
             }
           ) {
@@ -91,7 +91,8 @@ export default function BlogRoll({lang}) {
                 excerpt(pruneLength: 400)
                 id
                 fields {
-                  slug
+                  slug,
+                  langKey
                 }
                 frontmatter {
                   title
@@ -114,7 +115,7 @@ export default function BlogRoll({lang}) {
           }
         }
       `}
-      render={(data, count) => <BlogRollTemplate data={data} count={count} />}
+      render={(data, count) => <BlogRollTemplate data={data} count={count} {...props}/>}
     />
   );
 }
