@@ -22,10 +22,8 @@ i18n:
   default_locale: en
 
 collections:
-  - name: i18n_content
-      i18n: true
-
   - name: "blog"
+    i18n: true
     label: "Blog"
     folder: "src/pages/blog"
     create: true
