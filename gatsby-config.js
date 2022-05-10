@@ -55,11 +55,14 @@ module.exports = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
+          /*
+          // gatsby-remark-relative-images doesn't work properly after upgraded to version 2 (https://github.com/usu/ecamp-site/commit/b5896cd2903230350823f0687d1fb7cbcc344888)
+          // Consider downgrading again to 0.3 or leave it disabled
           {
             resolve: "gatsby-remark-relative-images",
             options: {
             },
-          },
+          },*/
           {
             resolve: "gatsby-remark-images",
             options: {
