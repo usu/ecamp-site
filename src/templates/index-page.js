@@ -116,8 +116,8 @@ IndexPage.propTypes = {
 export default IndexPage;
 
 export const pageQuery = graphql`
-  query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+  query IndexPageTemplate($id: String!){
+    markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
         image {
