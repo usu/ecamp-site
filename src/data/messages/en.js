@@ -3,7 +3,11 @@ module.exports = {
         'keepReading': 'Keep reading'
     },
     'navigation': {
-        'about': 'About'
+        'team': 'Team',
+        'blog': 'Blog',
+        'roadmap': 'Roadmap',
+        'contact': 'Contact',
+        'login': 'Login'
     },
     'selectLanguage': 'Select your language',
   };

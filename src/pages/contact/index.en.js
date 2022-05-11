@@ -1,6 +1,7 @@
 import * as React from "react";
 import { navigate } from "gatsby-link";
 import Layout from "../../components/Layout";
+import SimplePage from "../../components/SimplePage";
 
 function encode(data) {
   return Object.keys(data)
@@ -36,14 +37,11 @@ export default class Index extends React.Component {
   render() {
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1>Contact</h1>
+        <SimplePage title="Contact">
               <form
                 name="contact"
                 method="post"
-                action="/contact/thanks/"
+                action="/en/contact/thanks/"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={this.handleSubmit}
@@ -106,9 +104,8 @@ export default class Index extends React.Component {
                   </button>
                 </div>
               </form>
-            </div>
-          </div>
-        </section>
+          
+        </SimplePage>
       </Layout>
     );
   }
