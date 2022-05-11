@@ -29,11 +29,9 @@ const SelectLanguage = (props) => {
   );
 
   return (
-    <div className="has-text-centered">
       <ul className="language-selector">
         {links}
       </ul>
-    </div>
   );
 };
 

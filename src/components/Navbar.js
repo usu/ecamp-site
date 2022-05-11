@@ -46,7 +46,7 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <Link to={`/${this.props.lang}/`} className="navbar-item" title="Logo">
-              <img src={logo} alt="eCamp" style={{ width: "88px" }} />
+              <img src={logo} alt="eCamp" style={{ width: "40px" }} />
               eCamp
             </Link>
             {/* Hamburger menu */}
@@ -82,9 +82,10 @@ const Navbar = class extends React.Component {
               </Link>
             </div>
 
-            <SelectLanguage lang={this.props.lang} langs={this.props.langs} />
-
             <div className="navbar-end has-text-centered">
+              <div className="navbar-item">
+                <SelectLanguage className="navbar-item" lang={this.props.lang} langs={this.props.langs} />
+              </div>
               <a
                 className="navbar-item"
                 href="https://github.com/ecamp/ecamp3"
