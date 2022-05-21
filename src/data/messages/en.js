@@ -9,5 +9,11 @@ module.exports = {
         'contact': 'Contact',
         'login': 'Login'
     },
+    'contact': {
+        'name': 'Your name',
+        'email': 'Email',
+        'message': 'Message',
+        'send': 'Send'
+    },
     'selectLanguage': 'Select your language',
   };

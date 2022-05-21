@@ -6,8 +6,8 @@ import ContactForm from "../../components/ContactForm";
 const ContactPage = () => {
     return (
       <Layout>
-        <SimplePage title="Contact">
-          <ContactForm lang="en" />
+        <SimplePage title="Kontakt">
+          <ContactForm lang="de"/>
         </SimplePage>
       </Layout>
     );
